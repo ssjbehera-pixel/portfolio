@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CloudInfraFlow — Cloud Infrastructure, DevOps & Platform Engineering</title>
+  <meta name="description" content="CloudInfraFlow designs, builds, and operates modern cloud infrastructure across AWS, Azure, and GCP. Kubernetes platforms, DevSecOps, CI/CD, SRE, and FinOps — delivered with care." />
+  <meta name="theme-color" content="#0b1220" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/brand/favicon.png" />
+
+  <style>
+    /*
+      Code-only decorative background that mimics the generated artwork:
+      - layered radial gradients (color blobs)
+      - conic & linear gradients for sheen/streaks
+      - SVG dot pattern (repeating) for tech feel
+      - animated slow movement of the large blobs and streaks
+      - decorative SVG cloud+server icon anchored bottom-right
+    */
+
+    :root{
+      --bg-dark: #041018;
+      --text: #e6edf6;
+      --muted: #9aa9bb;
+      --brand1: #00d4ff;
+      --brand2: #6a3df2;
+      --accent: #8b3cff;
+      --overlay-dark: rgba(2,8,16,0.56);
+      --overlay-mid: rgba(2,8,16,0.32);
+      --card-alpha: 0.02;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+      color:var(--text);
+      background:var(--bg-dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1200px;margin:auto;padding:0 24px;position:relative;z-index:6}
+
+    /* ---------------- Decorative background (code-only) ---------------- */
+    .bg {
+      position:fixed; inset:0; z-index:0; pointer-events:none;
+      /* base dark */
+      background: radial-gradient(1200px 600px at 8% -10%, rgba(10,36,56,0.85) 0%, transparent 40%),
+                  radial-gradient(800px 400px at 92% -20%, rgba(30,10,48,0.78) 0%, transparent 40%),
+                  linear-gradient(180deg, rgba(4,8,16,1) 0%, rgba(6,10,20,1) 100%);
+      will-change: transform, opacity;
+      overflow:hidden;
+    }
+
+    /* large color blobs created with radial-gradients in pseudo-elements for layering */
+    .bg .blob-1, .bg .blob-2, .bg .blob-3 {
+      position:absolute; border-radius:50%; filter: blur(96px) saturate(120%); mix-blend-mode:screen; opacity:0.95;
+      transform-origin:center;
+    }
+    .bg .blob-1{ left:-10%; top:-30%; width:1600px; height:1000px;
+      background: radial-gradient(circle at 30% 30%, rgba(106,61,242,0.16), transparent 18%),
+                  radial-gradient(circle at 80% 20%, rgba(0,212,255,0.10), transparent 20%);
+      animation: blobMove1 30s linear infinite;
+    }
+    .bg .blob-2{ right:-18%; top:-10%; width:1200px; height:900px;
+      background: radial-gradient(circle at 20% 20%, rgba(255,80,160,0.10), transparent 16%),
+                  radial-gradient(circle at 70% 70%, rgba(0,200,255,0.06), transparent 18%);
+      filter: blur(100px) saturate(110%);
+      animation: blobMove2 36s linear infinite;
+    }
+    .bg .blob-3{ left:5%; bottom:-20%; width:1100px; height:700px;
+      background: radial-gradient(circle at 10% 80%, rgba(0,212,255,0.06), transparent 16%),
+                  radial-gradient(circle at 85% 60%, rgba(138,60,255,0.05), transparent 18%);
+      filter: blur(82px) saturate(115%);
+      animation: blobMove3 40s linear infinite;
+    }
+
+    @keyframes blobMove1 {
+      0%{ transform: translate3d(0,0,0) rotate(0deg) scale(1) }
+      50%{ transform: translate3d(5%,-4%,0) rotate(18deg) scale(1.02) }
+      100%{ transform: translate3d(0,0,0) rotate(0deg) scale(1) }
+    }
+    @keyframes blobMove2 {
+      0%{ transform: translate3d(0,0,0) rotate(0deg) scale(1) }
+      50%{ transform: translate3d(-4%,-3%,0) rotate(-20deg) scale(1.03) }
+      100%{ transform: translate3d(0,0,0) rotate(0deg) scale(1) }
+    }
+    @keyframes blobMove3 {
+      0%{ transform: translate3d(0,0,0) rotate(0deg) scale(1) }
+      50%{ transform: translate3d(3%,3%,0) rotate(10deg) scale(1.01) }
+      100%{ transform: translate3d(0,0,0) rotate(0deg) scale(1) }
+    }
+
+    /* light streak overlay (linear gradient rotated) */
+    .bg .streaks {
+      position:absolute; inset:-20% -30% auto auto; width:1600px; height:1400px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,212,255,0.06) 30%, rgba(106,61,242,0.06) 60%, rgba(255,255,255,0.02));
+      transform:rotate(-18deg) translateY(-20%);
+      filter: blur(36px) saturate(120%);
+      mix-blend-mode:overlay;
+      animation: streakMove 38s linear infinite;
+      opacity:0.9;
+    }
+    @keyframes streakMove {
+      0%{ transform:rotate(-18deg) translate3d(-8%,0,0) }
+      50%{ transform:rotate(-18deg) translate3d(6%,2%,0) }
+      100%{ transform:rotate(-18deg) translate3d(-8%,0,0) }
+    }
+
+    /* dotted tech grid created as an SVG pattern embedded inline — placed via an extra element */
+    .bg .dots {
+      position:absolute; inset:0; z-index:1; opacity:0.22; mix-blend-mode:soft-light;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.012) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events:none;
+    }
+
+    /* small diagonal sheen lines (thin, subtle) */
+    .bg .sheen {
+      position:absolute; inset:0; z-index:2; pointer-events:none;
+      background-image:
+        linear-gradient(45deg, rgba(255,255,255,0.01) 0 2px, transparent 2px 26px),
+        linear-gradient(135deg, rgba(255,255,255,0.007) 0 1px, transparent 1px 28px);
+      opacity:0.16;
+      transform:translateZ(0);
+    }
+
+    /* soft vignette / darken edges */
+    .bg .vignette {
+      position:absolute; inset:0; z-index:3; pointer-events:none;
+      background: radial-gradient(1000px 700px at 50% 40%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.36) 100%);
+      mix-blend-mode:multiply;
+    }
+
+    /* decorative gradient overlay to ensure readable text */
+    .bg .overlay {
+      position:absolute; inset:0; z-index:4; pointer-events:none;
+      background: linear-gradient(180deg, var(--overlay-dark), var(--overlay-mid));
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .bg .blob-1, .bg .blob-2, .bg .blob-3, .bg .streaks { animation: none; opacity:0.9; }
+    }
+
+    /* ---------------- Cloud + server SVG (code-only, anchored) ---------------- */
+    .decorative-icon {
+      position:fixed;
+      right:48px;
+      bottom:56px;
+      width:220px;
+      height:140px;
+      z-index:5;
+      pointer-events:none;
+      opacity:0.95;
+      filter: drop-shadow(0 18px 34px rgba(0,0,0,0.6));
+      transition:transform .22s ease;
+    }
+    .decorative-icon svg { width:100%; height:100%; display:block; }
+    .decorative-icon:hover { transform:translateY(-6px) }
+
+    /* ---------------- Page header, hero and content (kept similar to previous) ---------------- */
+    header{
+      position:sticky;top:0;z-index:10;
+      background:linear-gradient(180deg, rgba(10,18,28,0.84), rgba(8,14,22,0.66));
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,255,255,0.04);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;}
+    .brand{display:flex;align-items:center;gap:12px;padding-left:6px;z-index:6}
+    .logo-badge{display:grid;place-items:center;padding:6px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);box-shadow:0 10px 26px rgba(2,6,14,0.55);transition:transform .18s}
+    .logo-badge:hover{transform:translateY(-3px)}
+    .logo{width:66px;height:auto;display:block}
+    .brand-name{font-weight:800;font-size:20px;letter-spacing:.2px;color:var(--text);opacity:.98}
+    @media (max-width:900px){ .brand-name{display:none;} .logo{width:52px} }
+
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0;z-index:6}
+    .btn{padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);transition:.22s;background:transparent}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,0.45)}
+    .btn-primary{background:linear-gradient(135deg,var(--brand1),var(--brand2));border:0}
+    .mobile-toggle{display:none}
+
+    .hero{padding:96px 0 48px;position:relative;z-index:6}
+    .headline{font-size:clamp(36px,5.4vw,72px);font-weight:800;margin:0 0 18px;line-height:1.02}
+    .grad{background:linear-gradient(135deg,var(--brand1),var(--brand2));-webkit-background-clip:text;color:transparent}
+    .sub{color:var(--muted);max-width:900px}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+    .pill-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+    .pill{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.10);font-size:14px;background:rgba(255,255,255,0.02)}
+
+    section{padding:54px 0;position:relative;z-index:6}
+    .section-title{font-size:26px;margin:0 0 14px}
+    .grid{display:grid;gap:18px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,var(--card-alpha)), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      border-radius:16px;
+      padding:18px;
+      box-shadow: 0 18px 40px rgba(2,6,12,0.45);
+      overflow:hidden;
+      transition:transform .24s, box-shadow .24s;
+      position:relative;
+      backdrop-filter: blur(6px);
+    }
+    .card:hover{ transform: translateY(-6px); box-shadow: 0 36px 80px rgba(2,8,20,0.6); }
+
+    .img-wrap{display:block;border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));box-shadow: inset 0 -20px 60px rgba(0,0,0,0.12)}
+    .fit{width:100%;height:200px;object-fit:cover;display:block;transition:transform .35s ease, filter .25s ease;}
+    .img-wrap:hover .fit{transform:translateY(-6px);filter:brightness(1.02) saturate(1.03)}
+    .img-wrap::after{content:"";position:absolute;inset:0;border-radius:12px;pointer-events:none;background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.18));mix-blend-mode:overlay}
+
+    .fit.kube { object-position: center bottom; height:210px; }
+    .fit.sre  { object-position: center center; height:240px; }
+    .fit.center { object-position:center center; height:200px; }
+
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .stat{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px}
+    .num{font-size:28px;font-weight:800}
+    .lbl{font-size:14px;color:var(--muted)}
+
+    .faq-list{display:grid;gap:10px}
+    .faq summary{cursor:pointer;font-weight:700;padding:12px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04)}
+    .faq p{margin:10px 0 0;color:var(--muted)}
+
+    footer{
+      background:linear-gradient(180deg, rgba(6,9,16,0.03), rgba(6,9,16,0.12));
+      border-top:1px solid rgba(255,255,255,0.04);
+      padding:36px 0 92px;
+      position:relative;z-index:6;
+    }
+    .footer-grid{display:flex;justify-content:center;gap:48px;margin-bottom:26px;z-index:1}
+    .footer-grid h3{margin:0 0 6px;font-size:15px}
+    .footer-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px;color:var(--muted)}
+    .footer-copy{color:var(--muted);font-size:14px;margin-top:18px;opacity:.95;text-align:center}
+
+    @media(max-width:900px){
+      nav ul{display:none}
+      .mobile-toggle{display:block}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .stats-grid{grid-template-columns:1fr 1fr}
+      .footer-grid{flex-direction:column;align-items:center;text-align:center;margin-bottom:18px}
+      footer{padding-bottom:64px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Code-only decorative background layers -->
+  <div class="bg" aria-hidden="true">
+    <div class="blob-1" style="position:absolute" aria-hidden="true"></div>
+    <div class="blob-2" style="position:absolute" aria-hidden="true"></div>
+    <div class="blob-3" style="position:absolute" aria-hidden="true"></div>
+
+    <div class="streaks" aria-hidden="true"></div>
+    <div class="dots" aria-hidden="true"></div>
+    <div class="sheen" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="overlay" aria-hidden="true"></div>
+  </div>
+
+  <!-- Decorative cloud + server icon (SVG, code-only) -->
+  <div class="decorative-icon" aria-hidden="true">
+    <!-- SVG icon: cloud outline with three stacked server shapes inside -->
+    <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+      <defs>
+        <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#00d4ff"/>
+          <stop offset="1" stop-color="#6a3df2"/>
+        </linearGradient>
+        <filter id="f1" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#000" flood-opacity="0.45"/>
+        </filter>
+      </defs>
+
+      <!-- background gloss -->
+      <ellipse cx="180" cy="120" rx="150" ry="60" fill="url(#g1)" opacity="0.06"/>
+
+      <!-- cloud outline -->
+      <path d="M246 82c8 0 15 3 21 8 6 6 10 13 10 22 0 15-12 27-28 27H84c-22 0-40-16-40-36 0-17 14-32 32-32 5 0 10 1 15 3 10-30 38-52 72-52 36 0 66 22 75 54 6-1 12-2 18-2z"
+            fill="none" stroke="url(#g1)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#f1)"/>
+
+      <!-- servers (3 rounded rectangles) -->
+      <g transform="translate(100,110)">
+        <rect x="4" y="-6" rx="8" ry="8" width="152" height="28" fill="url(#g1)" opacity="0.98" />
+        <rect x="4" y="22" rx="8" ry="8" width="152" height="28" fill="url(#g1)" opacity="0.95" />
+        <rect x="4" y="50" rx="8" ry="8" width="152" height="28" fill="url(#g1)" opacity="0.92" />
+        <!-- small indicator circles -->
+        <circle cx="132" cy="8" r="3.8" fill="#01121a" />
+        <circle cx="132" cy="34" r="3.8" fill="#01121a" />
+        <circle cx="132" cy="62" r="3.8" fill="#01121a" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <a href="index.html" class="logo-badge" aria-label="CloudInfraFlow home">
+          <img src="assets/brand/cloudinfraflow-logo.png" class="logo" alt="CloudInfraFlow logo">
+        </a>
+        <span class="brand-name">CloudInfraFlow</span>
+      </div>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a class="btn" href="index.html">Home</a></li>
+          <li><a class="btn" href="about.html">About Us</a></li>
+          <li><a class="btn" href="services.html">Services</a></li>
+          <li><a class="btn" href="providers.html">Cloud Providers</a></li>
+          <li><a class="btn" href="blog.html">Blog</a></li>
+          <li><a class="btn" href="gallery.html">Gallery</a></li>
+          <li><a class="btn btn-primary" href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="headline">Enhance your business with <span class="grad">cloud engineering</span></h1>
+        <p class="sub">Scalable migration, modern architecture, Kubernetes platforms, DevSecOps, SRE and FinOps across AWS, Azure, and GCP.</p>
+
+        <div class="cta">
+          <a href="contact.html" class="btn btn-primary">Share Your Requirements</a>
+          <a href="services.html" class="btn">Explore Services</a>
+        </div>
+
+        <div class="pill-row" aria-hidden="true">
+          <span class="pill">Kubernetes</span>
+          <span class="pill">Terraform</span>
+          <span class="pill">Argo CD</span>
+          <span class="pill">Jenkins</span>
+          <span class="pill">OpenTelemetry</span>
+          <span class="pill">Prometheus & Grafana</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">Why teams choose us</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="img-wrap" style="position:relative;">
+              <img class="fit kube" src="assets/images/kubernetes.png" alt="Managed Kubernetes platforms on AWS, Azure and GCP">
+            </div>
+            <h3 style="margin-top:14px">Managed Kubernetes Platforms</h3>
+            <p class="muted">EKS/AKS/GKE with GitOps, autoscaling, policy guardrails, backup & DR.</p>
+          </div>
+
+          <div class="card">
+            <div class="img-wrap" style="position:relative;">
+              <img class="fit center" src="assets/images/devsecops.png" alt="DevSecOps CI/CD pipelines with quality gates">
+            </div>
+            <h3 style="margin-top:14px">DevSecOps & CI/CD</h3>
+            <p class="muted">Secure pipelines on Jenkins/GitHub/GitLab with quality gates & artifact governance.</p>
+          </div>
+
+          <div class="card">
+            <div class="img-wrap" style="position:relative;">
+              <img class="fit center" src="assets/images/FinOps-Kubernetes.png" alt="Observability & Insights / FinOps artwork">
+            </div>
+            <h3 style="margin-top:14px">Observability & Insights</h3>
+            <p class="muted">Prometheus, Grafana, ELK, OpenTelemetry and usage insights to control spend.</p>
+          </div>
+
+          <div class="card">
+            <div class="img-wrap" style="position:relative;">
+              <img class="fit center" src="assets/images/Migrate-legacy-application-to-cloud_banner-image.png" alt="Cloud migration and modernization services">
+            </div>
+            <h3 style="margin-top:14px">Cloud Migrations</h3>
+            <p class="muted">Landing zones, networking, identity, security baselines, and modernization.</p>
+          </div>
+
+          <div class="card">
+            <div class="img-wrap" style="position:relative;display:flex;align-items:center;justify-content:center;">
+              <img class="fit sre" src="assets/images/site-reliability-concept-260nw-2380119041.png" alt="SRE practices to improve reliability and MTTR">
+            </div>
+            <h3 style="margin-top:14px">SRE & Reliability</h3>
+            <p class="muted">Runbooks, on-call, incident response, MTTR improvements and chaos drills.</p>
+          </div>
+
+          <div class="card">
+            <div class="img-wrap" style="position:relative;">
+              <img class="fit center" src="assets/images/cloud-cost-control.png" alt="FinOps & Cost Control">
+            </div>
+            <h3 style="margin-top:14px">FinOps & Cost Control</h3>
+            <p class="muted">Rightsizing, autoscaling, commitment planning and spend governance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results">
+      <div class="container">
+        <h2 class="section-title">Customer results</h2>
+        <div class="stats-grid">
+          <div class="stat"><div class="num">30–50%</div><div class="lbl">Cloud cost reduction</div></div>
+          <div class="stat"><div class="num">45%</div><div class="lbl">Lower MTTR</div></div>
+          <div class="stat"><div class="num">20+</div><div class="lbl">Production clusters delivered</div></div>
+          <div class="stat"><div class="num">24×7</div><div class="lbl">On-call readiness</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section id="case-studies">
+      <div class="container">
+        <h2 class="section-title">Featured case studies</h2>
+        <div class="grid grid-3">
+          <article class="card">
+            <h3 style="margin:0 0 6px">eCommerce → EKS + GitOps</h3>
+            <p class="muted">Replatformed to EKS with Argo CD and progressive delivery; 38% infra cost saved and lead time cut from days to hours.</p>
+            <a href="blog.html" class="btn" style="margin-top:10px">Read more</a>
+          </article>
+          <article class="card">
+            <h3 style="margin:0 0 6px">FinTech → SLOs & OTel</h3>
+            <p class="muted">Unified OpenTelemetry pipelines with SLOs and burn-rate alerts; MTTR improved by 47% with clear runbooks.</p>
+            <a href="blog.html" class="btn" style="margin-top:10px">Read more</a>
+          </article>
+          <article class="card">
+            <h3 style="margin:0 0 6px">SaaS → Multi-cloud Landing Zone</h3>
+            <p class="muted">Landing zones across AWS/Azure with guardrails and FinOps governance; 32% savings within first quarter.</p>
+            <a href="blog.html" class="btn" style="margin-top:10px">Read more</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENGAGEMENT MODELS -->
+    <section id="engagement">
+      <div class="container">
+        <h2 class="section-title">Engagement models</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Fixed-scope Projects</h3>
+            <p class="muted">Clear outcomes & timelines for migrations, platform builds, and modernization initiatives.</p>
+          </div>
+          <div class="card">
+            <h3>Dedicated Engineering Pod</h3>
+            <p class="muted">Cross-functional pod (DevOps, SRE, Platform) embedded with your team for steady velocity.</p>
+          </div>
+          <div class="card">
+            <h3>Advisory & Enablement</h3>
+            <p class="muted">Architecture reviews, cost governance, SRE practices and enablement workshops.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY -->
+    <section id="security">
+      <div class="container">
+        <h2 class="section-title">Security by default</h2>
+        <div class="grid grid-3">
+          <div class="card"><h3>Identity & Access</h3><p class="muted">SSO, least-privilege IAM, secrets management and workload identity.</p></div>
+          <div class="card"><h3>Guardrails</h3><p class="muted">Policies, image/signature controls, supply chain security and compliance evidence.</p></div>
+          <div class="card"><h3>Backup & DR</h3><p class="muted">Immutable backups, restore testing, RPO/RTO adherence and runbooks.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faqs">
+      <div class="container">
+        <h2 class="section-title">FAQs</h2>
+        <div class="faq-list">
+          <details class="faq">
+            <summary>How fast can you start?</summary>
+            <p class="muted">Discovery can begin within 2–5 business days. We agree on scope, then start a short inception sprint.</p>
+          </details>
+          <details class="faq">
+            <summary>Do you work with existing infra and pipelines?</summary>
+            <p class="muted">Yes — we adopt your tools and progressively improve reliability, security and costs without disruption.</p>
+          </details>
+          <details class="faq">
+            <summary>What does a typical engagement look like?</summary>
+            <p class="muted">1) Discovery & architecture, 2) Foundations & platform build, 3) Operate & optimize with SLOs and FinOps.</p>
+          </details>
+          <details class="faq">
+            <summary>Can you help us get SOC2/ISO compliant?</summary>
+            <p class="muted">We bake policies, controls, logging and evidence into the platform to support your compliance journey.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section id="cta-final">
+      <div class="container" style="text-align:center">
+        <h2 class="section-title" style="margin-bottom:8px">Ready to accelerate your cloud journey?</h2>
+        <p class="muted" style="margin-top:0">Tell us your goals — we’ll propose a safe, cost-effective path with measurable outcomes.</p>
+        <div class="cta" style="justify-content:center">
+          <a href="contact.html" class="btn btn-primary">Start a discovery call</a>
+          <a href="services.html" class="btn">Explore services</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid" role="navigation" aria-label="Footer">
+        <div>
+          <h3>Company</h3>
+          <ul>
+            <li><a href="help.html">Help center</a></li>
+            <li><a href="notices.html">Summons/Notices</a></li>
+            <li><a href="grievances.html">Grievances</a></li>
+            <li><a href="report.html">Report issue</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Legal & Safety</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy policy</a></li>
+            <li><a href="terms.html">Terms & conditions</a></li>
+            <li><a href="fraud.html">Fraud alert</a></li>
+            <li><a href="safety.html">Trust & safety</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="height:28px" aria-hidden="true"></div>
+
+      <div class="footer-copy">© <span id="year"></span> CloudInfraFlow. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // simple JS to populate year and handle mobile nav toggle
+    function toggleNav(){
+      const ul=document.querySelector("nav ul");
+      ul.style.display = (getComputedStyle(ul).display==="none") ? "flex" : "none";
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+

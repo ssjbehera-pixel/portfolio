@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog — CloudInfraFlow</title>
+  <meta name="description" content="Guides and insights on AWS, Azure, GCP, Kubernetes, Terraform, DevOps, SRE, Observability, and FinOps." />
+  <style>
+    :root{
+      --bg:#0b1220; --card:#0f172a; --muted:#94a3b8; --text:#e6edf6;
+      --brand1:#00d4ff; --brand2:#6a3df2; --accent:#00ffa9;
+      --ring:linear-gradient(135deg,var(--brand1),var(--brand2));
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    body{color:var(--text);background:
+      radial-gradient(1200px 600px at 10% -10%, #12203a 0%, transparent 70%),
+      radial-gradient(800px 400px at 90% -20%, #1a103a 0%, transparent 60%), var(--bg)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto}
+    .container{max-width:1200px;margin:auto;padding:0 24px}
+
+    /* Header / Nav (same as index) */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.8);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.05)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:40px;height:40px}
+    .brand-title{font-weight:700;letter-spacing:.2px}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+    .btn{padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);transition:.25s;display:inline-flex;gap:8px;align-items:center}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+    .btn-primary{background-image:var(--ring);border:0}
+    .mobile-toggle{display:none}
+
+    /* Layout */
+    section{padding:54px 0}
+    .section-title{font-size:26px;margin:0 0 14px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:18px}
+    .grid-2{grid-template-columns:1.2fr .8fr}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+    .post{display:flex;flex-direction:column;gap:8px}
+    .post h3{margin:0}
+    .post p{margin:0;color:var(--muted)}
+    .meta{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--muted)}
+    .tag{padding:4px 8px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:12px;background:rgba(255,255,255,.04)}
+    .pill{padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+    .btn-link{display:inline-flex;align-items:center;gap:8px}
+
+    footer{border-top:1px solid rgba(255,255,255,.06);padding:28px 0 56px}
+
+    @media (max-width: 900px){
+      nav ul{display:none}
+      .mobile-toggle{display:flex}
+      .grid-2,.grid-3{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 256 256" aria-label="CloudInfraFlow logo" role="img">
+          <defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#00d4ff"/><stop offset="1" stop-color="#6a3df2"/></linearGradient></defs>
+          <path fill="url(#lg)" d="M86 190c-25 0-46-17-52-41C14 146 0 129 0 109c0-30 26-55 58-55 7 0 14 1 20 4C90 25 118 6 151 6c44 0 80 34 80 77v3c15 8 25 24 25 42 0 27-22 49-50 49H86z"/>
+          <path fill="#00ffa9" opacity=".8" d="M38 112a10 10 0 0 1 10-10h120a10 10 0 0 1 0 20H48a10 10 0 0 1-10-10Zm18 36a10 10 0 0 1 10-10h136a10 10 0 0 1 0 20H66a10 10 0 0 1-10-10Z"/>
+        </svg>
+        <div>
+          <div class="brand-title">CloudInfraFlow</div>
+          <div class="muted" style="font-size:12px">Design • Build • Operate</div>
+        </div>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="index.html" class="btn">Home</a></li>
+          <li><a href="about.html" class="btn">About Us</a></li>
+          <li><a href="services.html" class="btn">Services</a></li>
+          <li><a href="providers.html" class="btn">Cloud Providers</a></li>
+          <li><a href="blog.html" class="btn">Blog</a></li>
+          <li><a href="gallery.html" class="btn">Gallery</a></li>
+          <li><a href="contact.html" class="btn btn-primary">Contact Us</a></li>
+        </ul>
+      </nav>
+      <button class="btn mobile-toggle" aria-label="Toggle navigation" onclick="toggleNav()">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Blog intro + categories -->
+    <section class="container">
+      <div class="grid grid-2" style="align-items:start">
+        <div>
+          <h1 class="section-title">CloudInfraFlow Blog</h1>
+          <p class="muted">Field-tested playbooks on Kubernetes, DevSecOps, SRE, cloud architecture, and cost optimization. Practical. No fluff.</p>
+          <div class="meta" style="margin-top:10px">
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">Argo CD</span>
+            <span class="tag">Jenkins</span>
+            <span class="tag">Observability</span>
+            <span class="tag">FinOps</span>
+          </div>
+        </div>
+        <!-- Newsletter (mailto, no backend needed) -->
+        <div class="card">
+          <h3 style="margin-top:0">Get new posts by email</h3>
+          <p class="muted">We’ll send practical guides and checklists—no spam.</p>
+          <form onsubmit="return sub(event)">
+            <label>Email
+              <input id="subEmail" type="email" required placeholder="you@company.com" style="width:100%;margin-top:6px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.02);color:var(--text);padding:10px">
+            </label>
+            <div style="margin-top:10px">
+              <button class="btn btn-primary" type="submit">Subscribe</button>
+              <span id="subStatus" class="muted" style="margin-left:8px"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured post -->
+    <section class="container">
+      <article class="card post">
+        <div class="meta"><span class="pill">Featured</span><span>Playbook</span> • <span>8 min read</span></div>
+        <h2 style="margin:4px 0 6px">Production-ready EKS/AKS/GKE: a minimal baseline you can trust</h2>
+        <p>From cluster bootstrap to day-2 operations: GitOps with Argo CD, workload identity, network policies, autoscaling, and SLOs—shipped as code.</p>
+        <div class="meta"><span class="tag">Kubernetes</span><span class="tag">Argo CD</span><span class="tag">SRE</span></div>
+        <div><a class="btn-link" href="#" onclick="alert('Full article coming soon ✨')">Read more →</a></div>
+      </article>
+    </section>
+
+    <!-- Posts grid -->
+    <section class="container">
+      <h2 class="section-title">Latest guides</h2>
+      <div class="grid grid-3">
+        <article class="card post">
+          <h3>Right-sizing Kubernetes workloads</h3>
+          <p>Requests/limits that actually work, HPA/VPA choices, and preventing noisy-neighbor issues.</p>
+          <div class="meta"><span class="tag">Kubernetes</span><span class="tag">Cost</span></div>
+          <a class="btn-link" href="#" onclick="alert('Coming soon')">Read more →</a>
+        </article>
+
+        <article class="card post">
+          <h3>GitOps in practice with Argo CD</h3>
+          <p>App of Apps, progressive delivery, and safe multi-env promotion with change approvals.</p>
+          <div class="meta"><span class="tag">Argo CD</span><span class="tag">GitOps</span></div>
+          <a class="btn-link" href="#" onclick="alert('Coming soon')">Read more →</a>
+        </article>
+
+        <article class="card post">
+          <h3>CI/CD you can trust</h3>
+          <p>Jenkins and GitHub Actions hardening: least-privilege runners, SBOMs, signing, and policy gates.</p>
+          <div class="meta"><span class="tag">CI/CD</span><span class="tag">Security</span></div>
+          <a class="btn-link" href="#" onclick="alert('Coming soon')">Read more →</a>
+        </article>
+
+        <article class="card post">
+          <h3>Terraform for multi-cloud landing zones</h3>
+          <p>Module structure, remote state, drift detection, and safe rollbacks at scale.</p>
+          <div class="meta"><span class="tag">Terraform</span><span class="tag">AWS/Azure/GCP</span></div>
+          <a class="btn-link" href="#" onclick="alert('Coming soon')">Read more →</a>
+        </article>
+
+        <article class="card post">
+          <h3>Observability that reduces pages</h3>
+          <p>SLOs, burn-rate alerts, and dashboards that drive action—not noise.</p>
+          <div class="meta"><span class="tag">Prometheus</span><span class="tag">Grafana</span></div>
+          <a class="btn-link" href="#" onclick="alert('Coming soon')">Read more →</a>
+        </article>
+
+        <article class="card post">
+          <h3>FinOps quick wins in 1 week</h3>
+          <p>Right-size, autoscale, and storage lifecycle tweaks that save 20–40% fast.</p>
+          <div class="meta"><span class="tag">FinOps</span><span class="tag">Cost</span></div>
+          <a class="btn-link" href="#" onclick="alert('Coming soon')">Read more →</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared footer -->
+  <footer>
+    <div class="container">
+      <div class="divider"></div>
+      <div class="grid grid-3">
+        <div>
+          <div class="muted">© <span id="year"></span> CloudInfraFlow. All rights reserved.</div>
+          <div class="muted">hello@cloudinfraflow.com • Gurugram, IN</div>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+            <li><a href="help.html">Help center</a></li>
+            <li><a href="notices.html">Summons/Notices</a></li>
+            <li><a href="grievances.html">Grievances</a></li>
+            <li><a href="report.html">Report issue</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Legal & Safety</h3>
+          <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+            <li><a href="privacy.html">Privacy policy</a></li>
+            <li><a href="terms.html">Terms & conditions</a></li>
+            <li><a href="fraud.html">Fraud alert</a></li>
+            <li><a href="safety.html">Trust & safety</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleNav(){
+      const ul = document.querySelector('nav ul');
+      const open = getComputedStyle(ul).display !== 'none';
+      if(open){ ul.style.display='none'; }
+      else{ ul.style.display='flex'; ul.style.flexDirection='column'; ul.style.gap='8px'; ul.style.padding='12px 0'; }
+    }
+    function sub(e){
+      e.preventDefault();
+      const email = document.getElementById('subEmail').value.trim();
+      if(!email){ return false; }
+      const subject = 'Blog subscription request';
+      const body = `Please subscribe me to the CloudInfraFlow blog.%0D%0AEmail: ${email}`;
+      const mailto = `mailto:hello@cloudinfraflow.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+      document.getElementById('subStatus').textContent = 'Opening your email client…';
+      window.location.href = mailto;
+      return false;
+    }
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+

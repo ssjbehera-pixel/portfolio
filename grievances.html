@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Grievances — CloudInfraFlow</title>
+<meta name="description" content="Raise, track, and escalate grievances with CloudInfraFlow. Clear categories, response timelines, and an easy submission flow." />
+<style>
+  :root{
+    --bg:#0b1220; --card:#0f172a; --muted:#94a3b8; --text:#e6edf6;
+    --brand1:#00d4ff; --brand2:#6a3df2; --accent:#00ffa9;
+    --ring:linear-gradient(135deg,var(--brand1),var(--brand2));
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+  body{
+    color:var(--text);
+    background:
+      radial-gradient(1200px 600px at 10% -10%,#12203a 0%,transparent 70%),
+      radial-gradient(800px 400px at 90% -20%,#1a103a 0%,transparent 60%),
+      var(--bg);
+  }
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1100px;margin:auto;padding:0 24px}
+
+  /* Header (shared) */
+  header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.8);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.05)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:40px;height:40px}
+  .brand-title{font-weight:700;letter-spacing:.2px}
+  nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+  .btn{padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);transition:.25s;display:inline-flex;gap:8px;align-items:center}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .btn-primary{background-image:var(--ring);border:0}
+  .mobile-toggle{display:none}
+
+  /* Page */
+  main{padding:64px 0}
+  h1{font-size:34px;margin:0 0 10px}
+  .muted{color:var(--muted)}
+  .section-title{font-size:22px;margin:0 0 10px}
+  .grid{display:grid;gap:18px}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+  .callout{border-left:3px solid var(--accent);padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.03)}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);margin:22px 0}
+
+  /* Footer */
+  footer{border-top:1px solid rgba(255,255,255,.06);padding:28px 0 56px}
+
+  @media (max-width: 900px){
+    nav ul{display:none}
+    .mobile-toggle{display:flex}
+    .grid-2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- Shared header -->
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 256 256" aria-label="CloudInfraFlow logo" role="img">
+        <defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#00d4ff"/><stop offset="1" stop-color="#6a3df2"/></linearGradient></defs>
+        <path fill="url(#lg)" d="M86 190c-25 0-46-17-52-41C14 146 0 129 0 109c0-30 26-55 58-55 7 0 14 1 20 4C90 25 118 6 151 6c44 0 80 34 80 77v3c15 8 25 24 25 42 0 27-22 49-50 49H86z"/>
+        <path fill="#00ffa9" opacity=".8" d="M38 112a10 10 0 0 1 10-10h120a10 10 0 0 1 0 20H48a10 10 0 0 1-10-10Zm18 36a10 10 0 0 1 10-10h136a10 10 0 0 1 0 20H66a10 10 0 0 1-10-10Z"/>
+      </svg>
+      <div>
+        <div class="brand-title">CloudInfraFlow</div>
+        <div class="muted" style="font-size:12px">Design • Build • Operate</div>
+      </div>
+    </div>
+
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="index.html" class="btn">Home</a></li>
+        <li><a href="about.html" class="btn">About Us</a></li>
+        <li><a href="services.html" class="btn">Services</a></li>
+        <li><a href="providers.html" class="btn">Cloud Providers</a></li>
+        <li><a href="blog.html" class="btn">Blog</a></li>
+        <li><a href="gallery.html" class="btn">Gallery</a></li>
+        <li><a href="contact.html" class="btn btn-primary">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <button class="btn mobile-toggle" aria-label="Toggle navigation" onclick="toggleNav()">☰</button>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Grievances</h1>
+  <p class="muted">If something hasn’t gone right, tell us and we’ll fix it fast. Below is how to submit, response timelines, and escalation paths.</p>
+
+  <div class="grid grid-2" style="margin-top:18px">
+    <section class="card">
+      <h2 class="section-title">When to raise a grievance</h2>
+      <ul class="muted" style="margin:0;padding-left:18px">
+        <li><strong>Service quality</strong> — delays, outages, unmet deliverables.</li>
+        <li><strong>Billing & contracts</strong> — invoice disputes, scope mismatches.</li>
+        <li><strong>Security & privacy</strong> — data handling, access controls.</li>
+        <li><strong>Conduct</strong> — communication or behavior concerns.</li>
+        <li><strong>Other</strong> — anything that needs attention from leadership.</li>
+      </ul>
+      <div class="callout" style="margin-top:12px">
+        For urgent security events, email <strong>hello@cloudinfraflow.com</strong> with subject <em>“SECURITY: [short summary]”</em>.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">What to include</h2>
+      <ul class="muted" style="margin:0;padding-left:18px">
+        <li>Project / company name and your contact details.</li>
+        <li>Ticket / PO / invoice references (if any).</li>
+        <li>What happened, when it happened, and expected outcome.</li>
+        <li>Impact (users affected, environments, timelines).</li>
+        <li>Attachments: screenshots, logs, emails (optional).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Response timelines (SLA)</h2>
+      <ul class="muted" style="margin:0;padding-left:18px">
+        <li><strong>Acknowledgement:</strong> within <strong>1 business day</strong>.</li>
+        <li><strong>Initial investigation:</strong> within <strong>3 business days</strong>.</li>
+        <li><strong>Resolution/plan:</strong> typically within <strong>7–10 business days</strong> (complex matters may require more time; we’ll keep you updated).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Escalation path</h2>
+      <ol class="muted" style="margin:0;padding-left:18px">
+        <li>Reply in the same thread asking for escalation and include your ticket ID.</li>
+        <li>If not resolved, email <strong>hello@cloudinfraflow.com</strong> with subject <em>“ESCALATION: [ticket ID]”</em>.</li>
+        <li>We’ll arrange a call with a delivery lead to agree next steps and timelines.</li>
+      </ol>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <section class="card">
+    <h2 class="section-title">Submit a grievance</h2>
+    <p class="muted" style="margin:0 0 10px">Use the button below to open your email client with a ready-to-fill template.</p>
+    <a
+      class="btn btn-primary"
+      href="mailto:hello@cloudinfraflow.com?subject=Grievance%20Submission&body=Please%20fill%20the%20details%20below%20and%20send%20this%20email.%0D%0A%0D%0AOrganization%20%2F%20Project%3A%20%0D%0AYour%20Name%20%2F%20Role%3A%20%0D%0APhone%20%2F%20Email%3A%20%0D%0ACategory%20(Service%2C%20Billing%2C%20Security%2C%20Conduct%2C%20Other)%3A%20%0D%0AReferences%20(Ticket%2FPO%2FInvoice)%3A%20%0D%0AIssue%20Summary%3A%20%0D%0AImpact%3A%20%0D%0AAttachments%3A%20%0D%0AExpected%20Outcome%3A%20%0D%0A%0D%0AThanks.">
+      File a grievance
+    </a>
+    <p class="muted" style="margin:10px 0 0">Prefer a call? Mention your availability and we’ll schedule one.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="card">
+    <h2 class="section-title">Privacy</h2>
+    <p class="muted" style="margin:0">We’ll use the information you provide solely to investigate and resolve your grievance in line with our <a href="privacy.html" class="btn" style="padding:2px 8px">Privacy policy</a>. Please avoid sharing secrets, passwords, or OTPs.</p>
+  </section>
+</main>
+
+<!-- Shared footer -->
+<footer>
+  <div class="container">
+    <div class="divider"></div>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+      <div>
+        <div class="muted">© <span id="year"></span> CloudInfraFlow. All rights reserved.</div>
+        <div class="muted">hello@cloudinfraflow.com • Gurugram, IN</div>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+          <li><a href="help.html">Help center</a></li>
+          <li><a href="notices.html">Summons/Notices</a></li>
+          <li><a href="grievances.html">Grievances</a></li>
+          <li><a href="report.html">Report issue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal & Safety</h3>
+        <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms & conditions</a></li>
+          <li><a href="fraud.html">Fraud alert</a></li>
+          <li><a href="safety.html">Trust & safety</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav(){
+    const ul=document.querySelector('nav ul');
+    const open=getComputedStyle(ul).display!=='none';
+    if(open){ul.style.display='none'} else {
+      ul.style.display='flex'; ul.style.flexDirection='column'; ul.style.gap='8px'; ul.style.padding='12px 0';
+    }
+  }
+  const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>
+

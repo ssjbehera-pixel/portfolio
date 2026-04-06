@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy — CloudInfraFlow</title>
+<meta name="description" content="How CloudInfraFlow collects, uses, and protects your information." />
+<style>
+  :root{--bg:#0b1220;--card:#0f172a;--muted:#94a3b8;--text:#e6edf6;--brand1:#00d4ff;--brand2:#6a3df2;--accent:#00ffa9;--ring:linear-gradient(135deg,var(--brand1),var(--brand2))}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+  body{color:var(--text);background:
+    radial-gradient(1200px 600px at 10% -10%,#12203a 0%,transparent 70%),
+    radial-gradient(800px 400px at 90% -20%,#1a103a 0%,transparent 60%),var(--bg)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;height:auto}
+  .container{max-width:1200px;margin:auto;padding:0 24px}
+  /* Header (shared) */
+  header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.8);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.05)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:40px;height:40px}
+  .brand-title{font-weight:700;letter-spacing:.2px}
+  nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+  .btn{padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);transition:.25s;display:inline-flex;gap:8px;align-items:center}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .btn-primary{background-image:var(--ring);border:0}
+  .mobile-toggle{display:none}
+  /* Page */
+  main{padding:64px 0}
+  h1{font-size:34px;margin:0 0 8px}
+  .muted{color:var(--muted)}
+  .grid{display:grid;gap:18px}
+  .grid-2{grid-template-columns:1fr 1fr}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);margin:22px 0}
+  /* Footer */
+  footer{border-top:1px solid rgba(255,255,255,.06);padding:28px 0 56px}
+  @media (max-width:900px){nav ul{display:none}.mobile-toggle{display:flex}.grid-2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 256 256" aria-label="CloudInfraFlow logo" role="img">
+        <defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#00d4ff"/><stop offset="1" stop-color="#6a3df2"/></linearGradient></defs>
+        <path fill="url(#lg)" d="M86 190c-25 0-46-17-52-41C14 146 0 129 0 109c0-30 26-55 58-55 7 0 14 1 20 4C90 25 118 6 151 6c44 0 80 34 80 77v3c15 8 25 24 25 42 0 27-22 49-50 49H86z"/>
+        <path fill="#00ffa9" opacity=".8" d="M38 112a10 10 0 0 1 10-10h120a10 10 0 0 1 0 20H48a10 10 0 0 1-10-10Zm18 36a10 10 0 0 1 10-10h136a10 10 0 0 1 0 20H66a10 10 0 0 1-10-10Z"/>
+      </svg>
+      <div>
+        <div class="brand-title">CloudInfraFlow</div>
+        <div class="muted" style="font-size:12px">Design • Build • Operate</div>
+      </div>
+    </div>
+
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="index.html" class="btn">Home</a></li>
+        <li><a href="about.html" class="btn">About Us</a></li>
+        <li><a href="services.html" class="btn">Services</a></li>
+        <li><a href="providers.html" class="btn">Cloud Providers</a></li>
+        <li><a href="blog.html" class="btn">Blog</a></li>
+        <li><a href="gallery.html" class="btn">Gallery</a></li>
+        <li><a href="contact.html" class="btn btn-primary">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <button class="btn mobile-toggle" aria-label="Toggle navigation" onclick="(function(){const ul=document.querySelector('nav ul');const open=getComputedStyle(ul).display!=='none';ul.style.display=open?'none':'flex';ul.style.flexDirection='column';ul.style.gap='8px';ul.style.padding='12px 0'})()">☰</button>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Privacy Policy</h1>
+  <p class="muted">Effective date: <span id="eff"></span></p>
+
+  <section class="grid grid-2">
+    <article class="card">
+      <h2>1) Who we are</h2>
+      <p class="muted">CloudInfraFlow (“we”, “us”) provides cloud engineering and platform services.</p>
+
+      <div class="divider"></div>
+      <h2>2) What we collect</h2>
+      <ul class="muted" style="margin:0;padding-left:18px">
+        <li><strong>Contact</strong>: name, email, phone when you reach out.</li>
+        <li><strong>Business</strong>: company, project details you share for estimates.</li>
+        <li><strong>Operational</strong>: logs/metrics strictly for support if engaged.</li>
+        <li><strong>Site analytics</strong>: basic telemetry to improve the site; no sensitive data.</li>
+      </ul>
+
+      <div class="divider"></div>
+      <h2>3) How we use data</h2>
+      <ul class="muted" style="margin:0;padding-left:18px">
+        <li>Respond to inquiries, provide quotes, deliver services, and support.</li>
+        <li>Improve reliability, security, and usability.</li>
+        <li>Meet legal, compliance, and audit obligations.</li>
+      </ul>
+
+      <div class="divider"></div>
+      <h2>4) Sharing</h2>
+      <p class="muted">We do not sell your data. We may share with vetted sub-processors only to deliver services (e.g., cloud providers, CI/CD, ticketing). Contracts include confidentiality and data-protection terms.</p>
+
+      <div class="divider"></div>
+      <h2>5) Security</h2>
+      <p class="muted">Least-privilege access, encryption in transit/at rest where applicable, secrets management, and audit logging. Concerns? <a class="btn" style="padding:2px 8px" href="report.html">Report an issue</a>.</p>
+    </article>
+
+    <article class="card">
+      <h2>6) Retention</h2>
+      <p class="muted">We keep data only as long as needed for its purpose or as required by law/contract. You may request deletion where applicable.</p>
+
+      <div class="divider"></div>
+      <h2>7) Your rights</h2>
+      <p class="muted">Subject to local law, you may request access, correction, portability, or deletion of your personal data. We’ll respond within a reasonable timeframe.</p>
+
+      <div class="divider"></div>
+      <h2>8) Cookies & analytics</h2>
+      <p class="muted">We use minimal cookies/analytics for performance and troubleshooting. You can clear or block cookies in your browser settings.</p>
+
+      <div class="divider"></div>
+      <h2>9) International transfers</h2>
+      <p class="muted">Data may be processed in regions where we or sub-processors operate, with appropriate safeguards (e.g., SCCs or equivalent mechanisms).</p>
+
+      <div class="divider"></div>
+      <h2>10) Children</h2>
+      <p class="muted">Our services are business-focused and not directed to children under 16.</p>
+
+      <div class="divider"></div>
+      <h2>11) Contact</h2>
+      <p class="muted">Questions or requests: <strong>hello@cloudinfraflow.com</strong>.</p>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="divider"></div>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+      <div>
+        <div class="muted">© <span id="year"></span> CloudInfraFlow. All rights reserved.</div>
+        <div class="muted">hello@cloudinfraflow.com • Gurugram, IN</div>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+          <li><a href="help.html">Help center</a></li>
+          <li><a href="notices.html">Summons/Notices</a></li>
+          <li><a href="grievances.html">Grievances</a></li>
+          <li><a href="report.html">Report issue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal & Safety</h3>
+        <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms & conditions</a></li>
+          <li><a href="fraud.html">Fraud alert</a></li>
+          <li><a href="safety.html">Trust & safety</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('eff').textContent=new Date().toLocaleDateString();
+</script>
+</body>
+</html>
+

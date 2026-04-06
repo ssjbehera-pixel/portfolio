@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gallery — CloudInfraFlow</title>
+<meta name="description" content="Dashboards, pipelines, and cloud architecture highlights from CloudInfraFlow projects." />
+<style>
+  :root{
+    --bg:#0b1220; --card:#0f172a; --muted:#94a3b8; --text:#e6edf6;
+    --brand1:#00d4ff; --brand2:#6a3df2; --accent:#00ffa9;
+    --ring:linear-gradient(135deg,var(--brand1),var(--brand2));
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+  body{
+    color:var(--text);
+    background:
+      radial-gradient(1200px 600px at 10% -10%,#12203a 0%,transparent 70%),
+      radial-gradient(800px 400px at 90% -20%,#1a103a 0%,transparent 60%),
+      var(--bg);
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;height:auto;display:block}
+  .container{max-width:1200px;margin:auto;padding:0 24px}
+
+  /* Header (shared) */
+  header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.8);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.05)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:40px;height:40px}
+  .brand-title{font-weight:700;letter-spacing:.2px}
+  nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+  .btn{padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);transition:.25s;display:inline-flex;gap:8px;align-items:center}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .btn-primary{background-image:var(--ring);border:0}
+  .mobile-toggle{display:none}
+
+  /* Page */
+  main{padding:64px 0}
+  h1{font-size:34px;margin:0 0 8px}
+  .muted{color:var(--muted)}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);margin:24px 0}
+
+  /* Gallery grid */
+  .grid{display:grid;gap:18px}
+  .grid-auto{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  figure.card{
+    background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    padding:0;overflow:hidden;
+    transition:.25s;cursor:zoom-in;
+  }
+  figure.card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  figcaption{padding:12px;font-size:14px;color:var(--muted);border-top:1px solid rgba(255,255,255,.06)}
+
+  /* Lightbox */
+  .lightbox{
+    position:fixed;inset:0;display:none;place-items:center;
+    background:rgba(0,0,0,.7);backdrop-filter:blur(2px);z-index:80;
+  }
+  .lightbox.open{display:grid}
+  .lightbox img{
+    max-width:min(92vw,1200px);
+    max-height:90vh;border-radius:14px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+  .lightbox .close{
+    position:absolute;top:16px;right:16px;
+    padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.2);
+    background:rgba(0,0,0,.3);color:#fff;cursor:pointer
+  }
+
+  /* Footer */
+  footer{border-top:1px solid rgba(255,255,255,.06);padding:28px 0 56px}
+
+  @media (max-width:900px){
+    nav ul{display:none}
+    .mobile-toggle{display:flex}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 256 256" aria-label="CloudInfraFlow logo" role="img">
+        <defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#00d4ff"/><stop offset="1" stop-color="#6a3df2"/></linearGradient></defs>
+        <path fill="url(#lg)" d="M86 190c-25 0-46-17-52-41C14 146 0 129 0 109c0-30 26-55 58-55 7 0 14 1 20 4C90 25 118 6 151 6c44 0 80 34 80 77v3c15 8 25 24 25 42 0 27-22 49-50 49H86z"/>
+        <path fill="#00ffa9" opacity=".8" d="M38 112a10 10 0 0 1 10-10h120a10 10 0 0 1 0 20H48a10 10 0 0 1-10-10Zm18 36a10 10 0 0 1 10-10h136a10 10 0 0 1 0 20H66a10 10 0 0 1-10-10Z"/>
+      </svg>
+      <div>
+        <div class="brand-title">CloudInfraFlow</div>
+        <div class="muted" style="font-size:12px">Design • Build • Operate</div>
+      </div>
+    </div>
+
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="index.html" class="btn">Home</a></li>
+        <li><a href="about.html" class="btn">About Us</a></li>
+        <li><a href="services.html" class="btn">Services</a></li>
+        <li><a href="providers.html" class="btn">Cloud Providers</a></li>
+        <li><a href="blog.html" class="btn">Blog</a></li>
+        <li><a href="gallery.html" class="btn">Gallery</a></li>
+        <li><a href="contact.html" class="btn btn-primary">Contact Us</a></li>
+      </ul>
+    </nav>
+    <button class="btn mobile-toggle" aria-label="Toggle navigation" onclick="toggleNav()">☰</button>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Gallery</h1>
+  <p class="muted">A peek into our dashboards, pipelines, and architecture diagrams.</p>
+  <div class="divider"></div>
+
+  <div class="grid grid-auto" aria-label="Project gallery">
+    <figure class="card">
+      <img src="assets/gallery/obs.jpg" alt="Observability dashboard (SLOs and burn rate)" onclick="openLightbox(this.src,this.alt)">
+      <figcaption>SLO dashboard</figcaption>
+    </figure>
+
+    <figure class="card">
+      <img src="assets/gallery/gitops.jpg" alt="GitOps promotion pipeline with progressive delivery" onclick="openLightbox(this.src,this.alt)">
+      <figcaption>GitOps workflow</figcaption>
+    </figure>
+
+    <figure class="card">
+      <img src="assets/gallery/k8s.jpg" alt="Kubernetes reference architecture diagram" onclick="openLightbox(this.src,this.alt)">
+      <figcaption>Kubernetes platform</figcaption>
+    </figure>
+  </div>
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button class="close" onclick="closeLightbox()" aria-label="Close preview">✕</button>
+  <img id="lightboxImg" src="" alt="" />
+</div>
+
+<footer>
+  <div class="container">
+    <div class="divider"></div>
+    <div style="display:grid;gap:18px;grid-template-columns:repeat(3,1fr)">
+      <div>
+        <div class="muted">© <span id="yearG"></span> CloudInfraFlow. All rights reserved.</div>
+        <div class="muted">hello@cloudinfraflow.com • Gurugram, IN</div>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+          <li><a href="help.html">Help center</a></li>
+          <li><a href="notices.html">Summons/Notices</a></li>
+          <li><a href="grievances.html">Grievances</a></li>
+          <li><a href="report.html">Report issue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal & Safety</h3>
+        <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms & conditions</a></li>
+          <li><a href="fraud.html">Fraud alert</a></li>
+          <li><a href="safety.html">Trust & safety</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleNav(){
+  const ul = document.querySelector('nav ul');
+  const open = getComputedStyle(ul).display !== 'none';
+  ul.style.display = open ? 'none' : 'flex';
+  ul.style.flexDirection = 'column';
+  ul.style.gap = '8px';
+  ul.style.padding = '12px 0';
+}
+document.getElementById('yearG').textContent = new Date().getFullYear();
+
+function openLightbox(src, alt){
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightboxImg');
+  img.src = src; img.alt = alt || 'Preview';
+  lb.classList.add('open');
+}
+function closeLightbox(){
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightboxImg');
+  lb.classList.remove('open');
+  img.src = ''; img.alt = '';
+}
+// Close on backdrop click or ESC
+document.getElementById('lightbox').addEventListener('click', (e)=>{ if(e.target.id==='lightbox'){ closeLightbox(); }});
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeLightbox(); }});
+</script>
+</body>
+</html>
+

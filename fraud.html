@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fraud Alert — CloudInfraFlow</title>
+<meta name="description" content="Official fraud alert and safety guidance from CloudInfraFlow. Learn how to spot scams, verify communication, and report suspicious activity." />
+<style>
+  :root{
+    --bg:#0b1220; --card:#0f172a; --muted:#94a3b8; --text:#e6edf6;
+    --brand1:#00d4ff; --brand2:#6a3df2; --accent:#00ffa9;
+    --ring:linear-gradient(135deg,var(--brand1),var(--brand2));
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+  body{
+    color:var(--text);
+    background:
+      radial-gradient(1200px 600px at 10% -10%,#12203a 0%,transparent 70%),
+      radial-gradient(800px 400px at 90% -20%,#1a103a 0%,transparent 60%),
+      var(--bg);
+  }
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1100px;margin:auto;padding:0 24px}
+
+  /* Header (same as index) */
+  header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.8);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.05)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:40px;height:40px}
+  .brand-title{font-weight:700;letter-spacing:.2px}
+  nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+  .btn{padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);transition:.25s;display:inline-flex;gap:8px;align-items:center}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .btn-primary{background-image:var(--ring);border:0}
+  .mobile-toggle{display:none}
+
+  /* Page */
+  main{padding:64px 0}
+  h1{font-size:34px;margin:0 0 10px}
+  .muted{color:var(--muted)}
+  .section-title{font-size:22px;margin:0 0 10px}
+  .grid{display:grid;gap:18px}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+  .callout{border-left:3px solid var(--accent);padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.03)}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);margin:22px 0}
+
+  footer{border-top:1px solid rgba(255,255,255,.06);padding:28px 0 56px}
+
+  @media (max-width: 900px){
+    nav ul{display:none}
+    .mobile-toggle{display:flex}
+    .grid-2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- Shared header -->
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 256 256" aria-label="CloudInfraFlow logo" role="img">
+        <defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#00d4ff"/><stop offset="1" stop-color="#6a3df2"/></linearGradient></defs>
+        <path fill="url(#lg)" d="M86 190c-25 0-46-17-52-41C14 146 0 129 0 109c0-30 26-55 58-55 7 0 14 1 20 4C90 25 118 6 151 6c44 0 80 34 80 77v3c15 8 25 24 25 42 0 27-22 49-50 49H86z"/>
+        <path fill="#00ffa9" opacity=".8" d="M38 112a10 10 0 0 1 10-10h120a10 10 0 0 1 0 20H48a10 10 0 0 1-10-10Zm18 36a10 10 0 0 1 10-10h136a10 10 0 0 1 0 20H66a10 10 0 0 1-10-10Z"/>
+      </svg>
+      <div>
+        <div class="brand-title">CloudInfraFlow</div>
+        <div class="muted" style="font-size:12px">Design • Build • Operate</div>
+      </div>
+    </div>
+
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="index.html" class="btn">Home</a></li>
+        <li><a href="about.html" class="btn">About Us</a></li>
+        <li><a href="services.html" class="btn">Services</a></li>
+        <li><a href="providers.html" class="btn">Cloud Providers</a></li>
+        <li><a href="blog.html" class="btn">Blog</a></li>
+        <li><a href="gallery.html" class="btn">Gallery</a></li>
+        <li><a href="contact.html" class="btn btn-primary">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <button class="btn mobile-toggle" aria-label="Toggle navigation" onclick="toggleNav()">☰</button>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Fraud Alert</h1>
+  <p class="muted">Your safety matters. Use this page to verify official communication from CloudInfraFlow and learn how to report suspicious activity.</p>
+
+  <div class="grid grid-2" style="margin-top:18px">
+    <section class="card">
+      <h2 class="section-title">Official channels</h2>
+      <ul class="muted" style="margin:0;padding-left:18px">
+        <li>Primary email: <strong>hello@cloudinfraflow.com</strong></li>
+        <li>We do <strong>not</strong> request payments via personal UPI/PayTM/Wallets.</li>
+        <li>We never ask for your passwords, OTPs, API keys, or full card numbers.</li>
+        <li>Invoices are sent with a unique reference and a signed PDF.</li>
+      </ul>
+      <div class="callout" style="margin-top:12px">
+        Always double-check the domain spelling: <code>cloudinfraflow.com</code> (beware of look-alikes like <code>cloudintraflow</code>, <code>cloudainfraflow</code>, etc.).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Common red flags</h2>
+      <ul class="muted" style="margin:0;padding-left:18px">
+        <li>Urgent pressure to pay immediately or threats of service suspension.</li>
+        <li>Attachments asking you to “enable macros” or run unknown executables.</li>
+        <li>Links that open unfamiliar domains or shortened URLs.</li>
+        <li>Requests for remote desktop access to your machine without a ticket.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">How to verify a message</h2>
+      <ol class="muted" style="margin:0;padding-left:18px">
+        <li>Check the sender domain and full address (tap/click the name to view details).</li>
+        <li>Hover over links to see the true destination before clicking.</li>
+        <li>Ask for a ticket/reference number and reply back to <strong>hello@cloudinfraflow.com</strong> in a separate email thread.</li>
+        <li>If in doubt, forward the message to <strong>hello@cloudinfraflow.com</strong> with the subject “Verify authenticity”.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Report a suspicious message</h2>
+      <p class="muted" style="margin:0 0 10px">Send us details so we can investigate and help you stay safe.</p>
+      <ul class="muted" style="margin:0 0 10px;padding-left:18px">
+        <li>Copy of the email (including headers) or screenshots.</li>
+        <li>The suspicious links/attachments (do not open them).</li>
+        <li>Any payment or personal info requested.</li>
+      </ul>
+      <a class="btn btn-primary" href="mailto:hello@cloudinfraflow.com?subject=Report%20suspicious%20message&body=Please%20find%20attached%20screenshots%20and%20details.">Report to CloudInfraFlow</a>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <section class="card">
+    <h2 class="section-title">Protect your organization</h2>
+    <ul class="muted" style="margin:0;padding-left:18px">
+      <li>Enable MFA on email, cloud consoles, code hosting (GitHub/GitLab), and CI/CD.</li>
+      <li>Use role-based access and least-privilege IAM; rotate secrets regularly.</li>
+      <li>Turn on mailbox protections (SPF/DKIM/DMARC) and safe-link scanning.</li>
+      <li>Keep endpoints patched; use EDR/antivirus and block unknown macros.</li>
+      <li>Train teams to spot phishing and to verify before paying invoices.</li>
+    </ul>
+  </section>
+</main>
+
+<!-- Shared footer -->
+<footer>
+  <div class="container">
+    <div class="divider"></div>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+      <div>
+        <div class="muted">© <span id="year"></span> CloudInfraFlow. All rights reserved.</div>
+        <div class="muted">hello@cloudinfraflow.com • Gurugram, IN</div>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+          <li><a href="help.html">Help center</a></li>
+          <li><a href="notices.html">Summons/Notices</a></li>
+          <li><a href="grievances.html">Grievances</a></li>
+          <li><a href="report.html">Report issue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal & Safety</h3>
+        <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms & conditions</a></li>
+          <li><a href="fraud.html">Fraud alert</a></li>
+          <li><a href="safety.html">Trust & safety</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav(){
+    const ul = document.querySelector('nav ul');
+    const open = getComputedStyle(ul).display !== 'none';
+    if(open){ ul.style.display='none'; }
+    else{
+      ul.style.display='flex';
+      ul.style.flexDirection='column';
+      ul.style.gap='8px';
+      ul.style.padding='12px 0';
+    }
+  }
+  const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
+
