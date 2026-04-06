@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Services — CloudInfraFlow</title>
+<meta name="description" content="CloudInfraFlow delivers cloud architecture, Kubernetes platforms, DevSecOps, CI/CD, SRE, Observability, FinOps and migrations across AWS, Azure and GCP." />
+<style>
+  :root{--bg:#0b1220;--card:#0f172a;--muted:#94a3b8;--text:#e6edf6;--brand1:#00d4ff;--brand2:#6a3df2;--accent:#00ffa9;--ring:linear-gradient(135deg,var(--brand1),var(--brand2))}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+  body{color:var(--text);background:radial-gradient(1200px 600px at 10% -10%,#12203a 0%,transparent 70%),radial-gradient(800px 400px at 90% -20%,#1a103a 0%,transparent 60%),var(--bg)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;height:auto}
+  .container{max-width:1200px;margin:auto;padding:0 24px}
+
+  /* Header / Nav (shared) */
+  header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.8);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.05)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:40px;height:40px}
+  .brand-title{font-weight:700;letter-spacing:.2px}
+  nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+  .btn{padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);display:inline-flex;gap:8px;align-items:center;transition:.25s}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .btn-primary{background-image:var(--ring);border:0}
+  .mobile-toggle{display:none}
+
+  /* Page base */
+  main{padding:64px 0}
+  h1{font-size:34px;margin:0 0 8px}
+  .lead{color:var(--muted);max-width:920px}
+  .section-title{font-size:24px;margin:26px 0 12px}
+  .muted{color:var(--muted)}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);margin:24px 0}
+
+  .grid{display:grid;gap:18px}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+
+  .card{
+    position:relative;
+    background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;padding:18px;
+    transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-2px);border-color:rgba(0,255,169,.28);box-shadow:0 14px 32px rgba(0,0,0,.35)}
+  .card h3{margin:4px 0 8px;font-size:18px}
+  .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);font-size:13px;margin-right:6px;margin-top:6px}
+
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+
+  footer{border-top:1px solid rgba(255,255,255,.06);padding:28px 0 56px}
+
+  /* Responsive */
+  @media (max-width: 1000px){ .grid-3{grid-template-columns:1fr 1fr} }
+  @media (max-width: 900px){
+    nav ul{display:none}
+    .mobile-toggle{display:flex}
+    .grid-2,.grid-3{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 256 256" aria-label="CloudInfraFlow logo" role="img">
+        <defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#00d4ff"/><stop offset="1" stop-color="#6a3df2"/></linearGradient></defs>
+        <path fill="url(#lg)" d="M86 190c-25 0-46-17-52-41C14 146 0 129 0 109c0-30 26-55 58-55 7 0 14 1 20 4C90 25 118 6 151 6c44 0 80 34 80 77v3c15 8 25 24 25 42 0 27-22 49-50 49H86z"/>
+        <path fill="#00ffa9" opacity=".8" d="M38 112a10 10 0 0 1 10-10h120a10 10 0 0 1 0 20H48a10 10 0 0 1-10-10Zm18 36a10 10 0 0 1 10-10h136a10 10 0 0 1 0 20H66a10 10 0 0 1-10-10Z"/>
+      </svg>
+      <div><div class="brand-title">CloudInfraFlow</div><div class="muted" style="font-size:12px">Design • Build • Operate</div></div>
+    </div>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="index.html" class="btn">Home</a></li>
+        <li><a href="about.html" class="btn">About Us</a></li>
+        <li><a href="services.html" class="btn">Services</a></li>
+        <li><a href="providers.html" class="btn">Cloud Providers</a></li>
+        <li><a href="blog.html" class="btn">Blog</a></li>
+        <li><a href="gallery.html" class="btn">Gallery</a></li>
+        <li><a href="contact.html" class="btn btn-primary">Contact Us</a></li>
+      </ul>
+    </nav>
+    <button class="btn mobile-toggle" aria-label="Toggle navigation" onclick="toggleNav()">☰</button>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Services</h1>
+  <p class="lead">From landing zones to SRE, we deliver production-grade platforms with security, reliability, and cost-efficiency.</p>
+
+  <!-- Core offers -->
+  <div class="grid grid-3" style="margin-top:18px">
+    <article class="card">
+      <h3>Cloud Architecture</h3>
+      <p class="muted">AWS • Azure • GCP reference designs, landing zones, security baselines, automation.</p>
+      <div class="cta-row"><span class="chip">Landing Zones</span><span class="chip">Identity & Access</span><span class="chip">Networking</span></div>
+    </article>
+
+    <article class="card">
+      <h3>Kubernetes Platform</h3>
+      <p class="muted">EKS/AKS/GKE, GitOps (Argo CD), Helm, autoscaling, service mesh, policies.</p>
+      <div class="cta-row"><span class="chip">GitOps</span><span class="chip">HPA/VPA</span><span class="chip">Istio/Linkerd</span></div>
+    </article>
+
+    <article class="card">
+      <h3>DevSecOps & CI/CD</h3>
+      <p class="muted">Jenkins/GitHub/GitLab pipelines, SAST/DAST, artifacts, release orchestration.</p>
+      <div class="cta-row"><span class="chip">Quality Gates</span><span class="chip">SBOM</span><span class="chip">Progressive Delivery</span></div>
+    </article>
+
+    <article class="card">
+      <h3>Observability</h3>
+      <p class="muted">Prometheus, Grafana, ELK, OpenTelemetry, SLOs, incident workflows.</p>
+      <div class="cta-row"><span class="chip">SLOs</span><span class="chip">Tracing</span><span class="chip">Runbooks</span></div>
+    </article>
+
+    <article class="card">
+      <h3>FinOps</h3>
+      <p class="muted">Budgets, tagging, chargeback, right-sizing, spot/savings plans.</p>
+      <div class="cta-row"><span class="chip">Cost Dashboards</span><span class="chip">Anomaly Detection</span></div>
+    </article>
+
+    <article class="card">
+      <h3>Migrations</h3>
+      <p class="muted">Rehost/refactor to containers/serverless with zero-downtime cutovers.</p>
+      <div class="cta-row"><span class="chip">Cutover Plans</span><span class="chip">Blue/Green</span></div>
+    </article>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DevOps & Sysadmin -->
+  <h2 class="section-title">DevOps & System Administration</h2>
+  <div class="grid grid-3">
+    <article class="card"><h3>Linux System Administration</h3><p class="muted">Hardening, patching, backups, HA and DR.</p></article>
+    <article class="card"><h3>CI/CD</h3><p class="muted">Jenkins, GitHub Actions, GitLab CI, Maven/Gradle, Groovy pipelines.</p></article>
+    <article class="card"><h3>Infrastructure as Code</h3><p class="muted">Terraform, Ansible, Helm charts, GitOps workflows.</p></article>
+    <article class="card"><h3>Containers</h3><p class="muted">Docker images, SBOMs, registry, supply-chain security.</p></article>
+    <article class="card"><h3>Networking & Edge</h3><p class="muted">Nginx, Apache, WAF, CDN, TLS and mTLS.</p></article>
+    <article class="card"><h3>Datastores</h3><p class="muted">MySQL, MongoDB, PostgreSQL with backup/restore drills.</p></article>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Per-cloud focus -->
+  <h2 class="section-title">Per-Cloud Capabilities</h2>
+  <div class="grid grid-3">
+    <article class="card">
+      <h3>Amazon Web Services</h3>
+      <p class="muted">VPC, IAM, WAF • ECS/EKS/Fargate • RDS/Aurora/DynamoDB • CloudFront/API GW</p>
+      <div class="cta-row"><span class="chip">CodePipeline/Build</span><span class="chip">Terraform</span><span class="chip">Argo CD</span></div>
+    </article>
+    <article class="card">
+      <h3>Microsoft Azure</h3>
+      <p class="muted">VNet/NSG • AKS • App Service/Functions • Azure SQL/Cosmos/Storage • Front Door/APIM</p>
+      <div class="cta-row"><span class="chip">Azure DevOps</span><span class="chip">GitHub</span><span class="chip">Grafana/Prom</span></div>
+    </article>
+    <article class="card">
+      <h3>Google Cloud</h3>
+      <p class="muted">VPC/IAM • GKE/Cloud Run • Cloud SQL/Spanner/BigQuery • Cloud CDN/API GW</p>
+      <div class="cta-row"><span class="chip">Cloud Build</span><span class="chip">Terraform</span><span class="chip">Argo CD</span></div>
+    </article>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <section class="card" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <div>
+      <h2 class="section-title" style="margin:0">Ready to plan your platform?</h2>
+      <p class="muted" style="margin:6px 0 0">Get a free architecture outline within 24 hours — tailored to your goals and compliance needs (HIPAA, SOC 2, ISO 27001, PCI-DSS).</p>
+    </div>
+    <a class="btn btn-primary" href="contact.html">Start your strategy session</a>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="divider"></div>
+    <div class="grid" style="display:grid;gap:18px;grid-template-columns:repeat(3,1fr)">
+      <div>
+        <div class="muted">© <span id="yearS"></span> CloudInfraFlow. All rights reserved.</div>
+        <div class="muted">hello@cloudinfraflow.com • Gurugram, IN</div>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+          <li><a href="help.html">Help center</a></li>
+          <li><a href="notices.html">Summons/Notices</a></li>
+          <li><a href="grievances.html">Grievances</a></li>
+          <li><a href="report.html">Report issue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal & Safety</h3>
+        <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms & conditions</a></li>
+          <li><a href="fraud.html">Fraud alert</a></li>
+          <li><a href="safety.html">Trust & safety</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleNav(){
+  const ul = document.querySelector('nav ul');
+  const open = getComputedStyle(ul).display !== 'none';
+  ul.style.display = open ? 'none' : 'flex';
+  ul.style.flexDirection = 'column';
+  ul.style.gap = '8px';
+  ul.style.padding = '12px 0';
+}
+document.getElementById('yearS').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
+

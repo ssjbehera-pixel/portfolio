@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Terms & Conditions — CloudInfraFlow</title>
+<meta name="description" content="Standard terms for using CloudInfraFlow services and website." />
+<style>
+  :root{--bg:#0b1220;--card:#0f172a;--muted:#94a3b8;--text:#e6edf6;--brand1:#00d4ff;--brand2:#6a3df2;--accent:#00ffa9;--ring:linear-gradient(135deg,var(--brand1),var(--brand2))}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+  body{color:var(--text);background:
+    radial-gradient(1200px 600px at 10% -10%,#12203a 0%,transparent 70%),
+    radial-gradient(800px 400px at 90% -20%,#1a103a 0%,transparent 60%),var(--bg)}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1200px;margin:auto;padding:0 24px}
+  header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.8);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.05)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:40px;height:40px}
+  .brand-title{font-weight:700;letter-spacing:.2px}
+  nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+  .btn{padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);transition:.25s;display:inline-flex;gap:8px;align-items:center}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .btn-primary{background-image:var(--ring);border:0}
+  .mobile-toggle{display:none}
+  main{padding:64px 0}
+  h1{font-size:34px;margin:0 0 8px}
+  .muted{color:var(--muted)}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);margin:22px 0}
+  .grid{display:grid;gap:18px}
+  .grid-2{grid-template-columns:1fr 1fr}
+  footer{border-top:1px solid rgba(255,255,255,.06);padding:28px 0 56px}
+  @media(max-width:900px){nav ul{display:none}.mobile-toggle{display:flex}.grid-2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 256 256" aria-label="CloudInfraFlow logo" role="img">
+        <defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#00d4ff"/><stop offset="1" stop-color="#6a3df2"/></linearGradient></defs>
+        <path fill="url(#lg)" d="M86 190c-25 0-46-17-52-41C14 146 0 129 0 109c0-30 26-55 58-55 7 0 14 1 20 4C90 25 118 6 151 6c44 0 80 34 80 77v3c15 8 25 24 25 42 0 27-22 49-50 49H86z"/>
+        <path fill="#00ffa9" opacity=".8" d="M38 112a10 10 0 0 1 10-10h120a10 10 0 0 1 0 20H48a10 10 0 0 1-10-10Zm18 36a10 10 0 0 1 10-10h136a10 10 0 0 1 0 20H66a10 10 0 0 1-10-10Z"/>
+      </svg>
+      <div>
+        <div class="brand-title">CloudInfraFlow</div>
+        <div class="muted" style="font-size:12px">Design • Build • Operate</div>
+      </div>
+    </div>
+
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="index.html" class="btn">Home</a></li>
+        <li><a href="about.html" class="btn">About Us</a></li>
+        <li><a href="services.html" class="btn">Services</a></li>
+        <li><a href="providers.html" class="btn">Cloud Providers</a></li>
+        <li><a href="blog.html" class="btn">Blog</a></li>
+        <li><a href="gallery.html" class="btn">Gallery</a></li>
+        <li><a href="contact.html" class="btn btn-primary">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <button class="btn mobile-toggle" aria-label="Toggle navigation" onclick="(function(){const ul=document.querySelector('nav ul');const open=getComputedStyle(ul).display!=='none';ul.style.display=open?'none':'flex';ul.style.flexDirection='column';ul.style.gap='8px';ul.style.padding='12px 0'})()">☰</button>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Terms &amp; Conditions</h1>
+  <p class="muted">Effective date: <span id="eff"></span></p>
+
+  <section class="grid grid-2">
+    <article class="card">
+      <h2>1) Scope & acceptance</h2>
+      <p class="muted">These terms govern your use of our website and services. Project-specific Statements of Work (SOWs) override conflicting language.</p>
+
+      <div class="divider"></div>
+      <h2>2) Services</h2>
+      <p class="muted">We provide cloud engineering, DevOps, SRE, and related consulting. Deliverables, milestones, and acceptance criteria are defined in the SOW.</p>
+
+      <div class="divider"></div>
+      <h2>3) Your responsibilities</h2>
+      <ul class="muted" style="margin:0;padding-left:18px">
+        <li>Provide accurate information, access, and timely feedback.</li>
+        <li>Maintain licenses/rights for resources you direct us to use.</li>
+        <li>Protect credentials and confidential information.</li>
+      </ul>
+
+      <div class="divider"></div>
+      <h2>4) Fees & payment</h2>
+      <p class="muted">Fees and schedules appear in the SOW or order form. Late payments may incur interest as permitted by law.</p>
+
+      <div class="divider"></div>
+      <h2>5) Confidentiality</h2>
+      <p class="muted">Each party will protect the other’s confidential information and use it only to deliver/receive the services.</p>
+
+      <div class="divider"></div>
+      <h2>6) IP & licenses</h2>
+      <p class="muted">Pre-existing IP remains with the original party. Newly developed work is owned/licensed per the SOW. Open-source components remain under their respective licenses.</p>
+    </article>
+
+    <article class="card">
+      <h2>7) Data protection</h2>
+      <p class="muted">We handle personal data as described in our <a class="btn" style="padding:2px 8px" href="privacy.html">Privacy Policy</a> and, where required, under a Data Processing Addendum.</p>
+
+      <div class="divider"></div>
+      <h2>8) Warranties & disclaimers</h2>
+      <p class="muted">We will perform services with reasonable skill and care. Except as expressly stated, services are provided “as is”.</p>
+
+      <div class="divider"></div>
+      <h2>9) Limitation of liability</h2>
+      <p class="muted">To the maximum extent permitted by law, neither party is liable for indirect or consequential damages. Aggregate liability is limited to fees paid for the affected services in the prior 3 months (unless prohibited by law).</p>
+
+      <div class="divider"></div>
+      <h2>10) Termination</h2>
+      <p class="muted">Either party may terminate for material breach if not cured within 30 days of written notice. After termination, each party returns or deletes the other's confidential information.</p>
+
+      <div class="divider"></div>
+      <h2>11) Change orders</h2>
+      <p class="muted">Scope changes are documented via written change orders that may adjust fees, timelines, or deliverables.</p>
+
+      <div class="divider"></div>
+      <h2>12) Compliance & export</h2>
+      <p class="muted">Each party complies with applicable laws, including export control and sanctions.</p>
+
+      <div class="divider"></div>
+      <h2>13) General</h2>
+      <ul class="muted" style="margin:0;padding-left:18px">
+        <li><strong>Independent contractors</strong>; no agency or partnership is created.</li>
+        <li><strong>Subcontractors</strong> may assist; we remain responsible for performance.</li>
+        <li><strong>Non-solicitation</strong> (optional, if in SOW): you won’t solicit our staff for 6–12 months post-engagement.</li>
+        <li><strong>Force majeure</strong>: no liability for delays due to events beyond reasonable control.</li>
+        <li><strong>Publicity</strong>: we may list your logo/name with prior written consent.</li>
+        <li><strong>Severability; assignment</strong>: unenforceable terms are replaced with valid equivalents; assignment needs consent except in a merger/asset transfer.</li>
+        <li><strong>Governing law</strong>: as stated in the SOW; otherwise the laws of the primary delivery jurisdiction.</li>
+        <li><strong>Changes</strong>: we may update these terms; the “Effective date” reflects the latest revision.</li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="divider"></div>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+      <div>
+        <div class="muted">© <span id="year"></span> CloudInfraFlow. All rights reserved.</div>
+        <div class="muted">hello@cloudinfraflow.com • Gurugram, IN</div>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+          <li><a href="help.html">Help center</a></li>
+          <li><a href="notices.html">Summons/Notices</a></li>
+          <li><a href="grievances.html">Grievances</a></li>
+          <li><a href="report.html">Report issue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal & Safety</h3>
+        <ul class="muted" style="list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px">
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms & conditions</a></li>
+          <li><a href="fraud.html">Fraud alert</a></li>
+          <li><a href="safety.html">Trust & safety</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('eff').textContent=new Date().toLocaleDateString();
+</script>
+</body>
+</html>
+
